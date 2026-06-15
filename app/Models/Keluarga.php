@@ -17,4 +17,9 @@ class Keluarga extends Model
     {
         return $this->hasMany(Penduduk::class);
     }
+
+    public function syncJumlahAnggota(): void
+    {
+        $this->update(['jumlah_anggota' => $this->penduduks()->count()]);
+    }
 }
